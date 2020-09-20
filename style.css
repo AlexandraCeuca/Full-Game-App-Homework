@@ -1,0 +1,78 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background-image: url("./backgroundMain.jpg");
+}
+#flexContainer {
+    display: flex;
+    flex-direction: column;
+  }
+.gameContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+#buttonsGames {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#addForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 300px;
+}
+
+#buttonsGames button{
+    width: 160px;
+    height: 70px;
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(23 56 107);
+    box-shadow: -1px -1px 20px 10px rgb(5 90 217);
+    padding: 20px;
+}
+
+#loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 15px solid rgb(126, 126, 126);
+    border-radius: 50%;
+    border-top: 16px solid rgb(23 56 107);
+    box-shadow: -1px -1px 20px 10px rgb(5 90 217);
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; 
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  #addForm {
+      display:none;
+  }
+  
