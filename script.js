@@ -94,16 +94,12 @@ function deleteGame(id) {
     loader.displayLoader();
     fetch(this.baseUrl.href+"games"+"/"+id, { method: "DELETE" })
         .then(function (response) {
-            return (response.json());
-        })
-        .then(function (jsonResp) {
-            hideAddForm();
-            console.log(jsonResp);
             loader.hideLoader();
-            alert("Succes");
-        if (jsonResp.error) {
-            console.log("Something went wrong")
-        }
+            if (response.status === 200) {
+                alert("Success! Game deleted!");
+                getGames("games");
+            }
+            console.log(response);
         })
         .catch(function (error) {
             loader.hideLoader();
@@ -115,6 +111,8 @@ function deleteGame(id) {
 
 function displayGames() {
     const gamesContainer = document.getElementById("gamesContainer");
+    clearGamesContainer();
+
     if (this.gamesData) {
         for(let i=0; i<gamesData.length; i++){
             const game = new Game(gamesData[i]);
@@ -123,6 +121,16 @@ function displayGames() {
         }
     }
     gamesContainer.style.display = "block";
+}
+
+function clearGamesContainer () {
+    const gamesContainer = document.getElementById("gamesContainer");
+    const children = gamesContainer.querySelectorAll('*');
+    if(children) {
+        children.forEach(element => {
+            element.remove();
+        });
+    }
 }
 
 function hideGames() {
@@ -141,7 +149,9 @@ Game.prototype.getGameElement = function() {
     const gameContainer = document.createElement("div");
     gameContainer.classList.add("gameContainer");
     const gameTitle = document.createElement("h1");
+    gameTitle.classList.add("gameTitle");
     gameTitle.innerHTML = this.title;
+    gameContainer.appendChild(gameTitle);
     const deleteButton = document.createElement("button");
     deleteButton.id = this.id;
     deleteButton.innerText = "DELETE";
@@ -149,21 +159,22 @@ Game.prototype.getGameElement = function() {
         const id = e.target.id;
         deleteGame(id);
     }
+    deleteButton.classList.add("gameDeleteButton");
     gameContainer.appendChild(deleteButton);
-    gameContainer.appendChild(gameTitle);
     const gameImage = document.createElement("img");
     gameImage.src = this.imageUrl;
     gameContainer.appendChild(gameImage);
     gamesContainer.appendChild(gameContainer);
     const gameDescription = document.createElement("p");
     gameDescription.innerHTML = this.description;
+    gameDescription.style.color = "white";
     gameContainer.appendChild(gameDescription);
     return gameContainer;
 }
 
 function showAddForm (){
     addForm =document.getElementById("addForm");
-    addForm.style.display = "block";
+    addForm.style.display = "flex";
     const addGameButton = document.getElementById("addGame");
     addGameButton.addEventListener("click", function () { 
     addGame();

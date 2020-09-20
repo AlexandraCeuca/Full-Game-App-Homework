@@ -9,24 +9,21 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+#gamesContainer {
+  margin-top: 50px;
+}
 .gameContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-bottom: 50px;
+
 }
 #buttonsGames {
     margin-top: 30px;
     display: flex;
     justify-content: space-evenly;
-}
-
-#addForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 300px;
 }
 
 #buttonsGames button{
@@ -73,6 +70,42 @@ body {
     }
   }
   #addForm {
-      display:none;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 100px;
+  }
+  #addForm input {
+    margin-bottom: 30px;
+    width: 250px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(23 56 107);
+    box-shadow: -1px -1px 10px 5px red;
+    padding: 10px;
+  }
+  #addForm button {
+    width: 100px;
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(23 56 107);
+    box-shadow: -1px -1px 10px 5px red;
+    padding: 10px;
+  }
+  .gameTitle {
+    margin-bottom: 20px;
+    color: white;
+  }
+  .gameDeleteButton {
+    margin-bottom: 20px;
+    width: 100px;
+    color:white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(23 56 107);
+    box-shadow: -1px -1px 10px 5px red;
+    padding: 10px;
   }
   
